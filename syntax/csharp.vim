@@ -54,6 +54,7 @@ syn match   csharpSpecialError     contained "\\."
 syn match   csharpSpecialCharError contained "[^']"
 syn match   csharpSpecialChar      contained "\\\([4-9]\d\|[0-3]\d\d\|[\"\\'ntbrf]\|u\x\{4\}\)"
 syn region   csharpString          start=+"+ end=+"+ end=+$+ contains=csharpSpecialChar,csharpSpecialError,@Spell
+syn region   csharpVerbatimString  start=+@"+ end=+"+ end=+$+ contains=@Spell
 syn match   csharpStringError      +"\([^"\\]\|\\.\)*$+
 syn match   csharpCharacter        "'[^']*'" contains=csharpSpecialChar,csharpSpecialCharError
 syn match   csharpCharacter        "'\\''" contains=csharpSpecialChar
@@ -99,6 +100,7 @@ set foldmethod=syntax foldcolumn=2 foldtext=CSharpFoldText(0)
 
 hi link csharpCommentString csharpString
 hi link csharpComment2String csharpString
+hi link csharpVerbatimString csharpString
 hi link csharpCommentCharacter csharpCharacter
 
 if !exists("did_csharp_syntax_inits")
